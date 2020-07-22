@@ -11,11 +11,15 @@ public class HeadsTails extends Challenge {
 
     public void start(String userName) {
         System.out.println("Welcome to Heads/Tails " + userName + "!");
-        System.out.println("Type a number to select your choice: ");
-        displayOptions();
+        do {
+            System.out.println("Type a number to select your choice: ");
+            displayOptions();
+
+        } while (playAgain());
     }
 
     private void displayOptions() {
+        //Ask's player for input
         System.out.println("Type 1 or 2: ");
         int choice = s.nextInt();
         s.nextLine();
@@ -33,6 +37,7 @@ public class HeadsTails extends Challenge {
     }
 
     private void coinFlip() {
+        //Randomizes number between 1 & 2 then depending on the value it outputs the value.
         int randomNum = randomizer(1,2);
 
         switch (randomNum) {

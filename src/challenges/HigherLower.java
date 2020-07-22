@@ -11,16 +11,22 @@ public class HigherLower extends Challenge {
 
     public void start(String userName) {
         System.out.println("Welcome to Higher or Lower " + userName + "!");
-        System.out.println("Type a number to select your difficulty: ");
-        difficultySelection();
+//      Ask's user for input.
+        do {
+            System.out.println("Type a number to select your difficulty: ");
+            difficultySelection();
+
+        } while (playAgain());
     }
 
     private void difficultySelection() {
+//      Display's different difficulty settings.
         System.out.println("1. Easy: 1-10\n2. Medium: 1-25\n3. Hard: 1-50\n4. Custom Difficulty\n");
+//      Ask's for user's input for selection
         System.out.println("Enter a number for your selection: ");
         int choice = s.nextInt();
         s.nextLine();
-
+//      Different difficulty settings.
         int easy = randomizer(1,10);
         int medium = randomizer(1,25);
         int hard = randomizer(1,50);
@@ -30,7 +36,7 @@ public class HigherLower extends Challenge {
 
             switch (choice) {
                 case 1:
-                    game(easy,15);
+                    game(easy,5);
                     break;
                 case 2:
                     game(medium,10);
@@ -47,6 +53,7 @@ public class HigherLower extends Challenge {
     }
 
     private void customDifficulty() {
+//      Ask's user for how they want to play the game.
         System.out.println("Type a min value: ");
         int min = s.nextInt();
         s.nextLine();
@@ -62,27 +69,30 @@ public class HigherLower extends Challenge {
         int customDifficulty = randomizer(min,max);
         game(customDifficulty,numberOfGuesses);
     }
-
+//  Game Logic
     private void game(int difficulty, int numberOfGuesses) {
         int guesses = 0;
+        int guessesLeft = numberOfGuesses;
 
         while (guesses != numberOfGuesses) {
+//          Display's how many guesses the user has left.
+            System.out.println("You have " + guessesLeft-- + " tries..\n");
+//          Ask's for input
             System.out.println("Type a number within the difficulty range: ");
             int guess = s.nextInt();
             s.nextLine();
-
+//          Checks if number is equal to the difficulty number.
             if (guess == difficulty) {
-                System.out.println("You win! The number was: " + difficulty + "\nYou got it in " + guesses + " guesses!");
-                break;
-            } else if (guess < difficulty) {
-                guesses++;
-                System.out.println("Your guess is lower!\n");
+                System.out.println("You win! The number was: " + difficulty +
+                        "\nYou got it in " + guesses + " guesses!");
             } else if (guess > difficulty) {
                 guesses++;
-                System.out.println("Your guess is higher!\n");
+                System.out.println("Your guess is higher! Try again...\n");
             } else {
-                System.out.println("You loose! The number was " + difficulty);
+                guesses++;
+                System.out.println("Your guess is lower! Try again...\n");
             }
         }
+        System.out.println("You loose! The number was " + difficulty);
     }
 }

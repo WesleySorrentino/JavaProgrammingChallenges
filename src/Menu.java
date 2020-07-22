@@ -40,9 +40,6 @@ public class Menu {
                 break;
             case 2:
                 higherLower.start(userName);
-            default:
-                System.out.println("Please enter a valid Number!");
-                break;
         }
     }
 }

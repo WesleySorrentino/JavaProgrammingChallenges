@@ -1,6 +1,4 @@
-import challenges.Challenge;
-import challenges.HeadsTails;
-import challenges.HigherLower;
+import challenges.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,6 +7,7 @@ public class Menu {
     private Scanner s = new Scanner(System.in);
     private HeadsTails headsTails = new HeadsTails("Heads/Tails");
     private HigherLower higherLower = new HigherLower("Higher/Lower");
+    private RockPaperScissors rockPaperScissors = new RockPaperScissors("Rock/Paper/Scissors");
     private ArrayList<Challenge> challenges = new ArrayList<Challenge>();
 
     public void startScreen() {
@@ -22,6 +21,7 @@ public class Menu {
     private void printGames() {
         challenges.add(headsTails);
         challenges.add(higherLower);
+        challenges.add(rockPaperScissors);
 
         for (int i = 0; i <challenges.size() ; i++) {
             System.out.println((i+1) + ": " + challenges.get(i).getName());
@@ -40,6 +40,10 @@ public class Menu {
                 break;
             case 2:
                 higherLower.start(userName);
+                break;
+            case 3:
+                rockPaperScissors.start(userName);
+                break;
         }
     }
 }

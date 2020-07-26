@@ -11,7 +11,7 @@ public class Menu {
     private ArrayList<Challenge> challenges = new ArrayList<Challenge>();
 
     public void startScreen() {
-        System.out.println("Welcome to Code Challenges!");
+        System.out.println("Welcome to Java Code Challenges!");
         System.out.println("Please enter your name: ");
         String userName = s.nextLine();
         System.out.println("Hello " + userName + "!");

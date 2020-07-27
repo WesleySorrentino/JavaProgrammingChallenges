@@ -8,42 +8,49 @@ public class Menu {
     private HeadsTails headsTails = new HeadsTails("Heads/Tails");
     private HigherLower higherLower = new HigherLower("Higher/Lower");
     private RockPaperScissors rockPaperScissors = new RockPaperScissors("Rock/Paper/Scissors");
-    private ArrayList<Challenge> challenges = new ArrayList<Challenge>();
+    private ArrayList<Challenge> challenges = new ArrayList<>();
 
     public void startScreen() {
         System.out.println("Welcome to Java Code Challenges!");
         System.out.println("Please enter your name: ");
         String userName = s.nextLine();
-        System.out.println("Hello " + userName + "!");
+        System.out.println("Hello " + userName + "!\n");
         selection(userName);
     }
 
     private void printGames() {
-        challenges.add(headsTails);
-        challenges.add(higherLower);
-        challenges.add(rockPaperScissors);
-
-        for (int i = 0; i <challenges.size() ; i++) {
+        for (int i = 0; i <=2 ; i++) {
             System.out.println((i+1) + ": " + challenges.get(i).getName());
         }
     }
 
     private void selection(String userName) {
-        printGames();
-        System.out.println("Type a number: ");
-        int choice = s.nextInt();
-        s.nextLine();
+        challenges.add(headsTails);
+        challenges.add(higherLower);
+        challenges.add(rockPaperScissors);
 
-        switch (choice) {
-            case 1:
-                headsTails.start(userName);
-                break;
-            case 2:
-                higherLower.start(userName);
-                break;
-            case 3:
-                rockPaperScissors.start(userName);
-                break;
+        while (true) {
+            printGames();
+            System.out.println("Type a number or type 9 to quit: ");
+            int choice = s.nextInt();
+            s.nextLine();
+            switch (choice) {
+                case 1:
+                    headsTails.start(userName);
+                    break;
+                case 2:
+                    higherLower.start(userName);
+                    break;
+                case 3:
+                    rockPaperScissors.start(userName);
+                    break;
+                case 9:
+                    System.out.println("Exiting application...");
+                    System.exit(1);
+                    break;
+                default:
+                    System.out.println("Please enter a valid number\n");
+            }
         }
     }
 }

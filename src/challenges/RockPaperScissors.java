@@ -26,7 +26,7 @@ public class RockPaperScissors extends Challenge{
         String cap = playerMove.substring(0,1).toUpperCase() + playerMove.substring(1);
         String cpu = cpuMove();
 
-        checkWin(cap,"Paper");
+        checkWin(cap,"Scissors");
     }
 //  Displays the different ways the user can win
     private void howToPlay() {
@@ -54,10 +54,10 @@ public class RockPaperScissors extends Challenge{
             if (player.equals(entry.getKey()) && cpu.equals(entry.getValue())) {
                 System.out.println("Player wins! Cpu chose: " + cpu);
                 break;
-            } else if (cpu.equals(entry.getKey()) && player.equals(entry.getValue())){
+            } else if (cpu.equals(entry.getKey()) && player.equals(entry.getValue())) {
                 System.out.println("Player loses! Cpu chose: " + cpu);
                 break;
-            } else {
+            } else if (player.equals(cpu)) {
                 System.out.println("It's a draw! Player chose: " + player + " Cpu chose: " + cpu);
                 break;
             }

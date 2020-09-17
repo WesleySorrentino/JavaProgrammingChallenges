@@ -8,6 +8,7 @@ public class Menu {
     private HeadsTails headsTails = new HeadsTails("Heads/Tails");
     private HigherLower higherLower = new HigherLower("Higher/Lower");
     private RockPaperScissors rockPaperScissors = new RockPaperScissors("Rock/Paper/Scissors");
+    private FizzBuzz fizzBuzz = new FizzBuzz("FizzBuzz");
     private ArrayList<Challenge> challenges = new ArrayList<>();
 
     public void startScreen() {
@@ -19,7 +20,7 @@ public class Menu {
     }
 
     private void printGames() {
-        for (int i = 0; i <=2 ; i++) {
+        for (int i = 0; i <=challenges.size()-1; i++) {
             System.out.println((i+1) + ": " + challenges.get(i).getName());
         }
     }
@@ -28,6 +29,7 @@ public class Menu {
         challenges.add(headsTails);
         challenges.add(higherLower);
         challenges.add(rockPaperScissors);
+        challenges.add(fizzBuzz);
 
         while (true) {
             printGames();
@@ -44,6 +46,8 @@ public class Menu {
                 case 3:
                     rockPaperScissors.start(userName);
                     break;
+                case 4:
+                    fizzBuzz.start(userName);
                 case 9:
                     System.out.println("Exiting application...");
                     System.exit(1);
